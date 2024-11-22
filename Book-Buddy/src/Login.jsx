@@ -20,9 +20,7 @@ const LoginForm = () => {
         })
       });
       const responseJson = await response.json();
-      const accessToken = responseJson.access_token;
-      console.log(accessToken);
-      setToken(accessToken);
+
 
       setLogInEmail('');
       setLogInPassword('');

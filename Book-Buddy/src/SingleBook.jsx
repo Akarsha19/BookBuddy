@@ -10,20 +10,30 @@ const SingleBook = () => {
     const getBook = async () => {
       const response = await fetch(`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/${id}`)
       const book = await response.json();
-      console.log(book);
-      setSelectedBook(book);
+      //console.log(book);
+      setSelectedBook(book.books);
     }
     getBook()
   }, []);
 
   return (
-    <section>
 
-      <h1>{selectedBook.id}</h1>
-      <h1>{selectedBook.author}</h1>
-      <h1>{selectedBook.title}</h1>
+    <>{
 
-    </section >
+      selectedBook.map((singleBook) => {
+        return <li>{singleBook.title}
+          <img src={selectedBook.coverimage} style={{ width: 200, height: 200, }}></img>
+        </li>
+      })
+
+    }</>
+    // <section>
+
+    //   <h1>Single Book: {selectedBook.id}</h1>
+    //   <h1>{selectedBook.author}</h1>
+    //   <h1>{selectedBook.title}</h1>
+
+    // </section >
 
 
   )
